@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">ResidenteFly</string>
+    <string-array name="airports">
+        <item>LPA - Las Palmas de Gran Canaria</item>
+        <item>TFN - Tenerife Norte</item>
+        <item>TFS - Tenerife Sur</item>
+        <item>SPC - La Palma</item>
+        <item>GMZ - La Gomera</item>
+        <item>VDE - El Hierro</item>
+        <item>ACE - Lanzarote</item>
+        <item>FUE - Fuerteventura</item>
+        <item>MAD - Madrid Barajas</item>
+        <item>BCN - Barcelona El Prat</item>
+        <item>AGP - Málaga Costa del Sol</item>
+        <item>ALC - Alicante Elche</item>
+        <item>SVQ - Sevilla San Pablo</item>
+        <item>PMI - Palma de Mallorca</item>
+        <item>IBZ - Ibiza</item>
+        <item>VLC - Valencia</item>
+        <item>BIO - Bilbao</item>
+        <item>SCQ - Santiago de Compostela</item>
+        <item>LCG - A Coruña</item>
+        <item>OVD - Asturias</item>
+        <item>SDR - Santander</item>
+        <item>ZAZ - Zaragoza</item>
+        <item>GRX - Granada</item>
+        <item>XRY - Jerez</item>
+        <item>PNA - Pamplona</item>
+        <item>LEN - León</item>
+        <item>VLL - Valladolid</item>
+        <item>BJZ - Badajoz</item>
+        <item>MLN - Melilla</item>
+        <item>REU - Reus</item>
+        <item>GRO - Girona</item>
+        <item>SVQ - Sevilla</item>
+        <item>BCN - Barcelona</item>
+        <item>MAD - Madrid</item>
+        <item>PMI - Palma de Mallorca</item>
+        <item>AGP - Málaga</item>
+        <item>ALC - Alicante</item>
+        <item>VLC - Valencia</item>
+        <item>BIO - Bilbao</item>
+        <item>SCQ - Santiago de Compostela</item>
+        <item>LCG - A Coruña</item>
+        <item>OVD - Asturias</item>
+        <item>SDR - Santander</item>
+        <item>ZAZ - Zaragoza</item>
+        <item>GRX - Granada</item>
+        <item>XRY - Jerez</item>
+        <item>PNA - Pamplona</item>
+        <item>LEN - León</item>
+        <item>VLL - Valladolid</item>
+        <item>BJZ - Badajoz</item>
+        <item>MLN - Melilla</item>
+        <item>REU - Reus</item>
+        <item>GRO - Girona</item>
+        <item>SDJ - San Javier</item>
+        <item>PMU - Pamplona</item>
+        <item>XRY - Jerez de la Frontera</item>
+        <item>GRX - Granada</item>
+        <item>IBZ - Ibiza</item>
+        <item>MAH - Menorca</item>
+    </string-array>
+    <string-array name="sortSpinner">
+        <item>Precio</item>
+        <item>Duracion</item>
+    </string-array>
+    <string name="title_activity_main_activity2_vista_vuelos">MainActivity2VistaVuelos</string>
+</resources>

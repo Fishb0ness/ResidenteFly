@@ -11,10 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +38,7 @@ public class MainActivity2FlightsView extends AppCompatActivity {
     private FlightOfferCardAdapter flightOfferCardAdapter;
     private boolean residente;
     private boolean eligibleResidente;
-    private Switch buttonSwitch;
+    private SwitchCompat buttonSwitch;
     private Spinner sortSpinner;
     private String sortSpinnerSelection = "Precio";
 
@@ -103,13 +103,13 @@ public class MainActivity2FlightsView extends AppCompatActivity {
         return flightOfferStream.collect(Collectors.toList());
 
         /*
+        // Alternative way to do the same thing
         return flightOffers.stream()
                 .filter(flightOffer ->  isSwitchChecked ? flightOffer.isDirect() : true )
                 .sorted(sortMode == "Precio" ?
                         Comparator.comparing((FlightOffer flightOffer) -> flightOffer.getPrice().getAmount()) :
                         Comparator.comparing(FlightOffer::getDuration))
                 .collect(Collectors.toList());
-
          */
     }
 

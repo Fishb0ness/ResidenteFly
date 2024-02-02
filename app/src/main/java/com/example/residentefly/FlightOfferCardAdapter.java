@@ -1,9 +1,12 @@
 package com.example.residentefly;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +17,7 @@ import com.example.residentefly.domain.flightoffer.FlightOffer;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -58,8 +62,8 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
                 holder.textAirlineArrival.setVisibility(View.VISIBLE);
             }
         }
-        ZonedDateTime dateDeparture = flightOffer.getFirstFlight().getDepartureTime().atZone(java.time.ZoneOffset.systemDefault());
-        ZonedDateTime dateArrival = flightOffer.getLastFlight().getArrivalTime().atZone(java.time.ZoneOffset.systemDefault());
+        ZonedDateTime dateDeparture = flightOffer.getFirstFlight().getDepartureTime().atZone(ZoneOffset.systemDefault());
+        ZonedDateTime dateArrival = flightOffer.getLastFlight().getArrivalTime().atZone(ZoneOffset.systemDefault());
 
         holder.textDepartureTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateDeparture));
         holder.textFlightDuration.setText(durationToString(flightOffer.getDuration()));
@@ -104,6 +108,21 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
             }
         });
 
+        // button to open the web page of the airline
+        String websiteText = flightOffer.getFirstFlight().getAirline().getWebsite();
+        if (websiteText.startsWith("http://") || websiteText.startsWith("https://")) {
+            holder.buttonAirLineWeb.setText("ver en la web de la aerolínea");
+        } else {
+            holder.buttonAirLineWeb.setText("No disponible");
+        }
+        holder.buttonAirLineWeb.setOnClickListener(v -> {
+            if (websiteText.startsWith("http://") || websiteText.startsWith("https://")) {
+                // Open the web page of the airline
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(flightOffer.getFirstFlight().getAirline().getWebsite()));
+                v.getContext().startActivity(browserIntent);
+            }
+        });
+
     }
 
     @Override
@@ -130,6 +149,8 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
                 textNumeroEscalas, textArrivalEscala, textDepartureEscala,
                 textPrice;
 
+        Button buttonAirLineWeb;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textAirlineDeparture = itemView.findViewById(R.id.textAirlineDeparture);
@@ -146,6 +167,7 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
             textNumeroEscalas = itemView.findViewById(R.id.txEscalas);
             textArrivalEscala = itemView.findViewById(R.id.textArrivalEscala);
             textDepartureEscala = itemView.findViewById(R.id.textDepartureEscala);
+            buttonAirLineWeb = itemView.findViewById(R.id.buttonAirLineWeb);
         }
     }
 

@@ -68,6 +68,34 @@
                         android:layout_weight="1"
                         android:gravity="end"/>
 
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/textDeparture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:text="Departure" />
+
+                        <TextView
+                            android:id="@+id/txEscalas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Escalas" />
+
+                        <TextView
+                            android:id="@+id/textArrival"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="Arrival" />
+
+                    </TableRow>
+
                 </TableRow>
 
                 <TableRow>
@@ -100,34 +128,6 @@
                 </TableRow>
 
 
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/textDeparture"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="start"
-                        android:text="Departure" />
-
-                    <TextView
-                        android:id="@+id/txEscalas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Escalas" />
-
-                    <TextView
-                        android:id="@+id/textArrival"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="Arrival" />
-
-                </TableRow>
-
                 <TextView
                     android:id="@+id/textArrivalEscala"
                     android:layout_width="wrap_content"
@@ -156,6 +156,14 @@
                 android:textStyle="bold" />
 
         </TableRow>
+
+        <Button
+            android:id="@+id/buttonAirLineWeb"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="Link no disponible"
+            android:textStyle="bold" />
 
     </TableLayout>
 

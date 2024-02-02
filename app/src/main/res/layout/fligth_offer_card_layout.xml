@@ -54,14 +54,6 @@
                         android:gravity="start"/>
 
                     <TextView
-                        android:id="@+id/textFlightDuration"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Duration" />
-
-                    <TextView
                         android:id="@+id/textArrivalTime"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -101,6 +93,42 @@
                 <TableRow>
 
                     <TextView
+                        android:id="@+id/textDepartureArrivalTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/textArrivalEscala"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="ArrivalEscala"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textArrivalArrivalTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:visibility="gone"/>
+
+                </TableRow>
+
+                <TextView
+                    android:id="@+id/textFlightDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Duration" />
+
+                <TableRow>
+
+                    <TextView
                         android:id="@+id/textDepartureDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -126,15 +154,6 @@
                         android:visibility="gone"/>
 
                 </TableRow>
-
-
-                <TextView
-                    android:id="@+id/textArrivalEscala"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="ArrivalEscala"
-                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textDepartureEscala"

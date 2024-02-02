@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.residentefly.domain.Money;
+import com.example.residentefly.domain.flightoffer.Flight;
 import com.example.residentefly.domain.flightoffer.FlightOffer;
 
 import java.time.Duration;
@@ -62,21 +63,30 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
                 holder.textAirlineArrival.setVisibility(View.VISIBLE);
             }
         }
-        ZonedDateTime dateDeparture = flightOffer.getFirstFlight().getDepartureTime().atZone(ZoneOffset.systemDefault());
-        ZonedDateTime dateArrival = flightOffer.getLastFlight().getArrivalTime().atZone(ZoneOffset.systemDefault());
+        ZonedDateTime dateDepartureDeparture = flightOffer.getFirstFlight().getDepartureTime().atZone(ZoneOffset.systemDefault());
+        ZonedDateTime dateDepartureArrival = flightOffer.getFirstFlight().getArrivalTime().atZone(ZoneOffset.systemDefault());
+        ZonedDateTime dateArrivalDeparture = flightOffer.getLastFlight().getDepartureTime().atZone(ZoneOffset.systemDefault());
+        ZonedDateTime dateArrivalArrival = flightOffer.getLastFlight().getArrivalTime().atZone(ZoneOffset.systemDefault());
 
-        holder.textDepartureTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateDeparture));
-        holder.textFlightDuration.setText(durationToString(flightOffer.getDuration()));
-        holder.textArrivalTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateArrival));
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        holder.textDepartureDate.setText(dateTimeFormatter.format(dateDeparture));
-        holder.textArrivalDate.setText(dateTimeFormatter.format(dateArrival));
+        //if there is more than one stop, show the departure and arrival time of the first and last flight
+        holder.textDepartureTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateDepartureDeparture));
+        holder.textDepartureArrivalTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateDepartureArrival));
+        holder.textDepartureArrivalTime.setVisibility(expandedItems.get(position) ? View.VISIBLE : View.GONE);
+        holder.textArrivalTime.setText(expandedItems.get(position) ?
+                DateTimeFormatter.ofPattern("HH:mm").format(dateArrivalDeparture) : DateTimeFormatter.ofPattern("HH:mm").format(dateArrivalArrival));
+        holder.textArrivalArrivalTime.setText(DateTimeFormatter.ofPattern("HH:mm").format(dateArrivalArrival));
+        holder.textArrivalArrivalTime.setVisibility(expandedItems.get(position) ? View.VISIBLE : View.GONE);
+
+        holder.textFlightDuration.setText("Duracion: " + durationToString(flightOffer.getDuration()));
+
         // calculate the difference in days between arrival and departure
-        int differenceDays = dateArrival.getDayOfMonth() - dateDeparture.getDayOfMonth();
+        int differenceDays = dateArrivalArrival.getDayOfMonth() - dateDepartureDeparture.getDayOfMonth();
         // if departure date is different than arrival date, show difference in days
         if (differenceDays > 0) {
-            holder.textArrivalTime.setText(holder.textArrivalTime.getText() + " (+" + differenceDays + ")");
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            holder.textDepartureDate.setText(dateTimeFormatter.format(dateDepartureDeparture));
             holder.textDifferenceDays.setText("+" + differenceDays + " día(s)");
+            holder.textArrivalDate.setText(dateTimeFormatter.format(dateArrivalArrival));
             holder.textDepartureDate.setVisibility(View.VISIBLE);
             holder.textDifferenceDays.setVisibility(View.VISIBLE);
             holder.textArrivalDate.setVisibility(View.VISIBLE);
@@ -90,6 +100,7 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
         holder.textDeparture.setText(flightOffer.getFirstFlight().getDepartureAirport().getCode());
         holder.textArrival.setText(flightOffer.getLastFlight().getArrivalAirport().getCode());
         holder.textPrice.setText(String.format(Locale.forLanguageTag("es-ES"), "%.2f %S", totalPrice.getAmount(), totalPrice.getCurrency().getCurrencyCode()));
+
         //check if there is more than one stop to show the number of stops or if it is direct
         holder.textNumeroEscalas.setText(flightOffer.isDirect() ? "Directo" : "Escalas: " + (flightOffer.getFlights().size() - 1));
         holder.textArrivalEscala.setText(flightOffer.getFirstFlight().getArrivalAirport().getName());
@@ -147,6 +158,7 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
                 textDepartureDate, textDifferenceDays, textArrivalDate,
                 textDeparture, textArrival,
                 textNumeroEscalas, textArrivalEscala, textDepartureEscala,
+                textDepartureArrivalTime, textArrivalArrivalTime,
                 textPrice;
 
         Button buttonAirLineWeb;
@@ -164,6 +176,8 @@ public class FlightOfferCardAdapter extends RecyclerView.Adapter<FlightOfferCard
             textDeparture = itemView.findViewById(R.id.textDeparture);
             textArrival = itemView.findViewById(R.id.textArrival);
             textPrice = itemView.findViewById(R.id.textPrice);
+            textDepartureArrivalTime = itemView.findViewById(R.id.textDepartureArrivalTime);
+            textArrivalArrivalTime = itemView.findViewById(R.id.textArrivalArrivalTime);
             textNumeroEscalas = itemView.findViewById(R.id.txEscalas);
             textArrivalEscala = itemView.findViewById(R.id.textArrivalEscala);
             textDepartureEscala = itemView.findViewById(R.id.textDepartureEscala);
